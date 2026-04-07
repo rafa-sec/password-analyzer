@@ -6,4 +6,4 @@ def set_password_status(password_length):
     elif password_length <= 14:
         return "Strong"
     else:
-        return "Very Strong"
+        return "Very Strong!"
