@@ -3,6 +3,7 @@ from analyzer import set_password_status
 
 password = get_password()
 password_length = get_password_length(password)
+password_diversity = get_character_diversity(password)
 
 status = set_password_status(password_length)
 
@@ -10,4 +11,6 @@ print(f"""
 Your password: {password}
 Length: {password_length}
 Strength: {status}
+
+Character diversity: {password_diversity}
 """)
