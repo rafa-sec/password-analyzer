@@ -10,10 +10,11 @@ I have a deep passion for cybersecurity and wanted to understand how password st
 
 ## Features
 
-* Length analysis
-* Character diversity analysis (lowercase, uppercase, digits, symbols)
-* Entropy estimation
+* Length analysis ✅(Done)
+* Character diversity analysis (lowercase, uppercase, digits, symbols) ✅(Done)
+* Entropy estimation ✅(Done ~ First version)
 * Brute-force attack time simulation
+
 
 ## Tech
 
