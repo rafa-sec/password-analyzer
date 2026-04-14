@@ -7,7 +7,7 @@ from analyzer import  set_password_status
 password = get_password()
 password_length = get_password_length(password)
 password_diversity = get_character_diversity(password)
-points = set_password_points(password_length, password_diversity, points)
+points = set_password_points(password_length, password_diversity, points, password)
 password_status = set_password_status(points)
 
 
