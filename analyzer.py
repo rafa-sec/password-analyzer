@@ -1,15 +1,15 @@
 def set_password_status(points):
-    if points < 0:
+    if points <= 0:
+        return "Extremely weak password"
+    elif points <= 1:
         return "Very weak password"
-    elif points == 0:
+    elif points <= 2:
         return "Weak password"
-    elif points == 2:
-        return "Okay, but could be better"
     elif points <= 3:
         return "Okay"
-    elif points <= 5:
+    elif points <= 4:
         return "Good"
-    elif points <= 7:
+    elif points <= 5:
         return "Strong"
-    elif points > 8:
+    elif points >= 6:
         return "Very strong"
