@@ -15,7 +15,7 @@ def get_character_diversity(s):
         "lowercase": any(c.islower() for c in s),
 }
 
-def has_too_many_repeats(password, max_repeats=4):
+def has_too_many_repeats(password, max_repeats=2):
     count = 1
 
     for i in range(1, len(password)):
@@ -39,11 +39,20 @@ def set_password_points(password_length, password_diversity, points, password):
         points += 3
         
     if password_diversity["number"] and password_diversity["character"]:
+        points += 2
+    elif password_diversity["number"]:
         points += 1
+    
+
     if password_diversity["symbol"]:
         points += 1
+
     if password_diversity["uppercase"] and password_diversity["lowercase"]:
         points += 1
+    elif password_diversity["uppercase"]:
+        points -= 1
+    elif password_diversity["lowercase"]:
+        points -= 1
 
 
     if has_too_many_repeats(password):
