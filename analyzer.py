@@ -7,9 +7,9 @@ def set_password_status(points):
         return "Weak password"
     elif points <= 3:
         return "Okay"
-    elif points <= 4:
+    elif points <= 6:
         return "Good"
-    elif points <= 5:
+    elif points <= 8:
         return "Strong"
-    elif points >= 6:
+    elif points >= 10:
         return "Very strong"
