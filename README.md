@@ -12,7 +12,7 @@ I have a deep passion for cybersecurity and wanted to understand how password st
 
 * Length analysis ✅(Done)
 * Character diversity analysis (lowercase, uppercase, digits, symbols) ✅(Done)
-* Entropy estimation ✅(Done + New security rules)
+* Entropy estimation ✅(Done + security rules V.2)
 * Brute-force attack time simulation
 
 
