@@ -19,4 +19,3 @@ Password points: {points}
 
 Character diversity: {password_diversity}
 """)
-
