@@ -43,7 +43,7 @@ def set_password_points(password_length, password_diversity, points, password):
     elif password_length <= 14:
         points += 2
     elif password_length > 14:
-        points += 3
+        points += 5
         
     if password_diversity["number"] and password_diversity["character"]:
         points += 2
@@ -55,7 +55,7 @@ def set_password_points(password_length, password_diversity, points, password):
         points += 1
 
     if password_diversity["uppercase"] and password_diversity["lowercase"]:
-        points += 1
+        points += 2
     elif password_diversity["uppercase"]:
         points -= 1
     elif password_diversity["lowercase"]:
@@ -63,6 +63,6 @@ def set_password_points(password_length, password_diversity, points, password):
 
 
     if has_too_many_repeats(password):
-        points -= 3
+        points -= 5
 
     return points
