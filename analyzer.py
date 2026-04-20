@@ -1,4 +1,36 @@
-def set_password_status(points):
+from utils import has_too_many_repeats
+
+def calculate_password_points(password_length, password_diversity, password):
+    points = 0
+
+    if password_length < 8:
+        points -= 1
+    elif password_length <= 12:
+        points += 1
+    elif password_length <= 14:
+        points += 2
+    else:
+        points += 5
+
+    if password_diversity["number"] and password_diversity["character"]:
+        points += 2
+    elif password_diversity["number"]:
+        points += 1
+
+    if password_diversity["symbol"]:
+        points += 1
+
+    if password_diversity["uppercase"] and password_diversity["lowercase"]:
+        points += 2
+    elif password_diversity["uppercase"] or password_diversity["lowercase"]:
+        points -= 1
+
+    if has_too_many_repeats(password):
+        points -= 5
+
+    return points
+
+def get_password_status(points):
     if points <= 0:
         return "Extremely weak password"
     elif points <= 1:
