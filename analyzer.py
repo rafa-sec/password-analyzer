@@ -4,6 +4,8 @@ def calculate_password_points(password_length, password_diversity, password):
     points = 0
     feedback = []
 
+
+#Pattern detection system
     if contains_common_word(password):
         points -= 5
         feedback.append("Avoid common words")
@@ -16,6 +18,8 @@ def calculate_password_points(password_length, password_diversity, password):
         points -= 3
         feedback.append("Avoid using years")
 
+
+#Lenght analyzer
     if password_length < 8:
         points -= 1
     elif password_length <= 12:
@@ -25,6 +29,8 @@ def calculate_password_points(password_length, password_diversity, password):
     else:
         points += 5
 
+
+#Character diversity analyzer
     if password_diversity["number"] and password_diversity["character"]:
         points += 2
     elif password_diversity["number"]:
@@ -41,6 +47,7 @@ def calculate_password_points(password_length, password_diversity, password):
         points -= 1
         
 
+#Repeated characters detector
     if has_too_many_repeats(password):
         points -= 5
         feedback.append("Too many characters repeated!")
@@ -48,7 +55,7 @@ def calculate_password_points(password_length, password_diversity, password):
 
 
 
-    ###FEEDBACK AREA####
+#Feedback system
 
     if not password_diversity["uppercase"]:
         feedback.append("Add uppercase letters")
@@ -68,6 +75,8 @@ def calculate_password_points(password_length, password_diversity, password):
     return points, feedback
 
 
+
+#Password points status
 def get_password_status(points):
     if points <= 0:
         return "Extremely weak password"
