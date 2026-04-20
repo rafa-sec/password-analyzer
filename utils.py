@@ -57,3 +57,10 @@ def has_sequence(password):
             return True
 
     return False
+
+
+def has_year_pattern(password):
+    for year in range(1900,2031):
+        if str(year) in password:
+            return True
+    return False
