@@ -1,78 +1,63 @@
-from utils import has_too_many_repeats, common_words
+def get_password():
+    return input("""
+                                                                                                                      
+█████▄  ▄▄▄   ▄▄▄▄  ▄▄▄▄ ▄▄   ▄▄  ▄▄▄  ▄▄▄▄  ▄▄▄▄    ▄████▄ ▄▄  ▄▄  ▄▄▄  ▄▄  ▄▄ ▄▄ ▄▄▄▄▄ ▄▄▄▄▄ ▄▄▄▄  
+██▄▄█▀ ██▀██ ███▄▄ ███▄▄ ██ ▄ ██ ██▀██ ██▄█▄ ██▀██   ██▄▄██ ███▄██ ██▀██ ██  ▀███▀   ▄█▀ ██▄▄  ██▄█▄ 
+██     ██▀██ ▄▄██▀ ▄▄██▀  ▀█▀█▀  ▀███▀ ██ ██ ████▀   ██  ██ ██ ▀██ ██▀██ ██▄▄▄ █   ▄██▄▄ ██▄▄▄ ██ ██ 
+                                                                                                      
+                 Insert your password here: """)
 
-def calculate_password_points(password_length, password_diversity, password):
-    points = 0
-    feedback = []
+def get_password_length(password):
+    return len(password)
 
+def get_character_diversity(password):
+    return {
+        "number": any(c.isdigit() for c in password),
+        "character": any(c.isalpha() for c in password),
+        "symbol": any(not c.isalnum() for c in password),
+        "uppercase": any(c.isupper() for c in password),
+        "lowercase": any(c.islower() for c in password),
+    }
 
-    if common_words(password) == True:
-        points -= 5
-        feedback.append("Don't use common words!")
+def has_too_many_repeats(password, max_repeats=2):
+    count = 1
 
-    if password_length < 8:
-        points -= 1
-    elif password_length <= 12:
-        points += 1
-    elif password_length <= 14:
-        points += 2
-    else:
-        points += 5
+    for i in range(1, len(password)):
+        if password[i] == password[i - 1]:
+            count += 1
+            if count > max_repeats:
+                return True
+        else:
+            count = 1
 
-    if password_diversity["number"] and password_diversity["character"]:
-        points += 2
-    elif password_diversity["number"]:
-        points += 1
+    return False
 
+def common_words(password):
+    COMMON_WORDS = [
+    "password", "admin", "user", "login",
+    "rafael", "john", "maria", "alex",
+    "qwerty", "abc123", "welcome"
+    ]
 
-    if password_diversity["symbol"]:
-        points += 1
+    password_lower = password.lower()
+
+    for word in COMMON_WORDS:
+        if password_lower:
+            return True
         
-    
-    if password_diversity["uppercase"] and password_diversity["lowercase"]:
-        points += 2
-    elif password_diversity["uppercase"] or password_diversity["lowercase"]:
-        points -= 1
+    return False
+
+def detect_sequences(password):
+    sequences = [
+        "123", "1234", "1122", "2211",
+        "1212", "2121", "abc", "abcd",
+        "qwerty"
+        ]
+
+    password_lower = password.lower()
+
+    for word in sequences:
+        if password_lower:
+            return True
         
-
-    if has_too_many_repeats(password):
-        points -= 5
-        feedback.append("Too many characters repeated!")
-
-
-
-
-    ###FEEDBACK AREA####
-
-    if not password_diversity["uppercase"]:
-        feedback.append("Add uppercase letters")
-
-    if not password_diversity["lowercase"]:
-        feedback.append("Add lowercase letters")
-
-    if not password_diversity["symbol"]:
-        feedback.append("Add symbols")
-    
-    if not password_diversity["character"]:
-        feedback.append("Add characters")
-
-    if not password_diversity["number"]:
-        feedback.append("Add numbers")
-
-    return points, feedback
-
-
-def get_password_status(points):
-    if points <= 0:
-        return "Extremely weak password"
-    elif points <= 1:
-        return "Very weak password"
-    elif points <= 2:
-        return "Weak password"
-    elif points <= 3:
-        return "Okay"
-    elif points <= 6:
-        return "Good"
-    elif points <= 9:
-        return "Strong"
-    else:
-        return "Very strong"
+    return False
