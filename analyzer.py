@@ -1,15 +1,15 @@
-from utils import has_too_many_repeats, common_words, detect_sequences
+from utils import has_too_many_repeats, contains_common_word, has_sequence
 
 def calculate_password_points(password_length, password_diversity, password):
     points = 0
     feedback = []
 
 
-    if common_words(password) == True:
+    if contains_common_word(password):
         points -= 5
         feedback.append("Avoid common words")
 
-    if detect_sequences(password) == True:
+    if has_sequence(password):
         points -= 3
         feedback.append("Avoid sequences")
 
