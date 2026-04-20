@@ -1,8 +1,13 @@
-from utils import has_too_many_repeats
+from utils import has_too_many_repeats, common_words
 
 def calculate_password_points(password_length, password_diversity, password):
     points = 0
     feedback = []
+
+
+    if common_words(password) == True:
+        points -= 5
+        feedback.append("Don't use common words!")
 
     if password_length < 8:
         points -= 1
