@@ -31,3 +31,18 @@ def has_too_many_repeats(password, max_repeats=2):
             count = 1
 
     return False
+
+def common_words(password):
+    COMMON_WORDS = [
+    "password", "admin", "user", "login",
+    "rafael", "john", "maria", "alex",
+    "qwerty", "abc123", "welcome"
+    ]
+
+    password_lower = password.lower()
+
+    for word in COMMON_WORDS:
+        if password_lower:
+            return True
+        
+    return False
