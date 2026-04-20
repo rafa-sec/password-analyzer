@@ -1,9 +1,8 @@
-from utils import has_too_many_repeats, contains_common_word, has_sequence
+from utils import has_too_many_repeats, contains_common_word, has_sequence, has_year_pattern
 
 def calculate_password_points(password_length, password_diversity, password):
     points = 0
     feedback = []
-
 
     if contains_common_word(password):
         points -= 5
@@ -12,6 +11,10 @@ def calculate_password_points(password_length, password_diversity, password):
     if has_sequence(password):
         points -= 3
         feedback.append("Avoid sequences")
+
+    if has_year_pattern(password):
+        points -= 3
+        feedback.append("Avoid using years")
 
     if password_length < 8:
         points -= 1
