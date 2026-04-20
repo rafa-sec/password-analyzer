@@ -46,3 +46,18 @@ def common_words(password):
             return True
         
     return False
+
+def detect_sequences(password):
+    sequences = [
+        "123", "1234", "1122", "2211",
+        "1212", "2121", "abc", "abcd",
+        "qwerty"
+        ]
+
+    password_lower = password.lower()
+
+    for word in sequences:
+        if password_lower:
+            return True
+        
+    return False
