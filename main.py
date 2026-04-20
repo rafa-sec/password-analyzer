@@ -5,7 +5,7 @@ password = get_password()
 password_length = get_password_length(password)
 password_diversity = get_character_diversity(password)
 
-points = calculate_password_points(password_length, password_diversity, password)
+points, feedback = calculate_password_points(password_length, password_diversity, password)
 password_status = get_password_status(points)
 
 print(f"""
@@ -16,3 +16,8 @@ Password points: {points}
 
 Character diversity: {password_diversity}
 """)
+
+if feedback:
+    print("Feedback:")
+    for f in feedback:
+        print(f"-{f}")

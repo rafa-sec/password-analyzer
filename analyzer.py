@@ -2,6 +2,7 @@ from utils import has_too_many_repeats
 
 def calculate_password_points(password_length, password_diversity, password):
     points = 0
+    feedback = []
 
     if password_length < 8:
         points -= 1
@@ -17,18 +18,43 @@ def calculate_password_points(password_length, password_diversity, password):
     elif password_diversity["number"]:
         points += 1
 
+
     if password_diversity["symbol"]:
         points += 1
-
+        
+    
     if password_diversity["uppercase"] and password_diversity["lowercase"]:
         points += 2
     elif password_diversity["uppercase"] or password_diversity["lowercase"]:
         points -= 1
+        
 
     if has_too_many_repeats(password):
         points -= 5
+        feedback.append("Too many characters repeated!")
 
-    return points
+
+
+
+    ###FEEDBACK AREA####
+
+    if not password_diversity["uppercase"]:
+        feedback.append("Add uppercase letters")
+
+    if not password_diversity["lowercase"]:
+        feedback.append("Add lowercase letters")
+
+    if not password_diversity["symbol"]:
+        feedback.append("Add symbols")
+    
+    if not password_diversity["character"]:
+        feedback.append("Add characters")
+
+    if not password_diversity["number"]:
+        feedback.append("Add numbers")
+
+    return points, feedback
+
 
 def get_password_status(points):
     if points <= 0:
