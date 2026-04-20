@@ -1,3 +1,10 @@
+COMMON_WORDS = [
+    "password", "admin", "user", "login",
+    "rafael", "john", "maria", "alex",
+    "qwerty", "abc123", "welcome"
+]
+
+
 def get_password():
     return input("""
                                                                                                                       
@@ -6,7 +13,6 @@ def get_password():
 ██     ██▀██ ▄▄██▀ ▄▄██▀  ▀█▀█▀  ▀███▀ ██ ██ ████▀   ██  ██ ██ ▀██ ██▀██ ██▄▄▄ █   ▄██▄▄ ██▄▄▄ ██ ██ 
                                                                                                       
                  Insert your password here: """)
-
 def get_password_length(password):
     return len(password)
 
@@ -32,32 +38,22 @@ def has_too_many_repeats(password, max_repeats=2):
 
     return False
 
-def common_words(password):
-    COMMON_WORDS = [
-    "password", "admin", "user", "login",
-    "rafael", "john", "maria", "alex",
-    "qwerty", "abc123", "welcome"
-    ]
-
+def contains_common_word(password):
     password_lower = password.lower()
 
     for word in COMMON_WORDS:
-        if password_lower:
+        if word in password_lower:
             return True
-        
+
     return False
 
-def detect_sequences(password):
-    sequences = [
-        "123", "1234", "1122", "2211",
-        "1212", "2121", "abc", "abcd",
-        "qwerty"
-        ]
+def has_sequence(password):
+    sequences = ["123", "abc", "qwerty"]
 
     password_lower = password.lower()
 
-    for word in sequences:
-        if password_lower:
+    for seq in sequences:
+        if seq in password_lower:
             return True
-        
+
     return False
