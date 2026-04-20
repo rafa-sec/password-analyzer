@@ -1,5 +1,3 @@
-points = 0
-
 def get_password():
     return input("""
                                                                                                      
@@ -36,6 +34,7 @@ def has_too_many_repeats(password, max_repeats=2):
     return False
 
 def set_password_points(password_length, password_diversity, points, password):
+    points = 0
     if password_length < 8 :
         points -= 1
     elif password_length <= 12:
