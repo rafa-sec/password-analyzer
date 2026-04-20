@@ -1,3 +1,4 @@
+#Simple common words database for analysis
 COMMON_WORDS = [
     "password", "admin", "user", "login",
     "rafael", "john", "maria", "alex",
@@ -5,17 +6,25 @@ COMMON_WORDS = [
 ]
 
 
+
+#Get password function
 def get_password():
     return input("""
                                                                                                                       
 █████▄  ▄▄▄   ▄▄▄▄  ▄▄▄▄ ▄▄   ▄▄  ▄▄▄  ▄▄▄▄  ▄▄▄▄    ▄████▄ ▄▄  ▄▄  ▄▄▄  ▄▄  ▄▄ ▄▄ ▄▄▄▄▄ ▄▄▄▄▄ ▄▄▄▄  
 ██▄▄█▀ ██▀██ ███▄▄ ███▄▄ ██ ▄ ██ ██▀██ ██▄█▄ ██▀██   ██▄▄██ ███▄██ ██▀██ ██  ▀███▀   ▄█▀ ██▄▄  ██▄█▄ 
 ██     ██▀██ ▄▄██▀ ▄▄██▀  ▀█▀█▀  ▀███▀ ██ ██ ████▀   ██  ██ ██ ▀██ ██▀██ ██▄▄▄ █   ▄██▄▄ ██▄▄▄ ██ ██ 
+                                                       
                                                                                                       
                  Insert your password here: """)
+
+
+#Return password length
 def get_password_length(password):
     return len(password)
 
+
+#Get Character diversity
 def get_character_diversity(password):
     return {
         "number": any(c.isdigit() for c in password),
@@ -25,6 +34,8 @@ def get_character_diversity(password):
         "lowercase": any(c.islower() for c in password),
     }
 
+
+#Detect if there is a character being repeated in the password
 def has_too_many_repeats(password, max_repeats=2):
     count = 1
 
@@ -38,6 +49,9 @@ def has_too_many_repeats(password, max_repeats=2):
 
     return False
 
+
+
+#Detect common patterns system
 def contains_common_word(password):
     password_lower = password.lower()
 
