@@ -14,7 +14,7 @@ I have a deep passion for cybersecurity and wanted to understand how password st
 * Character diversity analysis (lowercase, uppercase, digits, symbols) ✅(Done)
 * Entropy estimation ✅(Done + security rules V.3)
 * Feedback system ✅(Done)
-* Pattern detection
+* Pattern detection ✅(Done)
 * Brute-force attack time simulation
 
 
