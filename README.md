@@ -1,4 +1,5 @@
-#🔐 Password Analyzer
+## 🔐 Password Analyzer
+
 ## What it does
 
 This tool analyzes the strength of a password and estimates how resistant it is against brute-force attacks.
